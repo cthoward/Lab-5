@@ -4,7 +4,7 @@ name: Deploy static content to Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["shivatest"]
+    branches: ["main"]
 jobs:
   # Single deploy job since we're just deploying
   web-deploy:
@@ -17,8 +17,8 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@2.0.0
         env:
           FTP_SERVER: home562576484.1and1-data.host
-          FTP_USERNAME: acc1554780496
-          FTP_PASSWORD: IS436fall@2024
+          FTP_USERNAME: ${{secrets.ftp_username}}
+          FTP_PASSWORD: ${{secrets.ftp_password}}
           local_path: './*'
           PORT: 22
           METHOD: sftp
